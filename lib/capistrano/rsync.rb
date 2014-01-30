@@ -76,6 +76,8 @@ namespace :rsync do
 
       checkout = %W[git reset --hard origin/#{fetch(:branch)}]
       Kernel.system *checkout
+
+      set :current_revision, "#{`git rev-parse --short HEAD`}".chomp
     end
   end
 
